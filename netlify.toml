@@ -1,0 +1,13 @@
+[build]
+  command   = "npm run build"
+  publish   = ".output/public"
+
+[build.environment]
+  NODE_VERSION  = "20"
+  NITRO_PRESET  = "netlify"
+  NPM_FLAGS     = "--legacy-peer-deps"
+
+[[redirects]]
+  from   = "/*"
+  to     = "/.netlify/functions/server"
+  status = 200
