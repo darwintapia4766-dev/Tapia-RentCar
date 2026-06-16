@@ -10,5 +10,5 @@ export default defineConfig({
   tanstackStart: {
     server: { entry: "server" },
   },
-  nitro: { preset: "netlify" },
+  nitro: { preset: "netlify-edge" },
 });
