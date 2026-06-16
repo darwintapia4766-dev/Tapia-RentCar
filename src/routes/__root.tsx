@@ -13,7 +13,6 @@ import { Toaster } from "@/components/ui/sonner";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { supabase } from "@/integrations/supabase/client";
-import { lovable } from "@/integrations/lovable";
 import type { Session } from "@supabase/supabase-js";
 
 function NotFoundComponent() {
@@ -150,6 +149,7 @@ export async function signInWithGoogle(redirectAfter?: string) {
   if (redirectAfter && typeof window !== "undefined") {
     sessionStorage.setItem("post_login_redirect", redirectAfter);
   }
+  const { lovable } = await import("@/integrations/lovable");
   const result = await lovable.auth.signInWithOAuth("google", {
     redirect_uri: typeof window !== "undefined" ? window.location.origin : undefined,
   });
